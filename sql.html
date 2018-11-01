@@ -16,3 +16,71 @@ distinct去掉重复的值。
 'chen').
 
 Constraints,约束，限制写入数据库的形式。unique，表示数据唯一，唯一性的约束。
+
+sql中的循环：
+ --SQL中的循环、for循环、游标
+ --1. 利用游标循环更新、删除MemberAccount表中的数据
+ DECLARE My_Cursor CURSOR --定义游标
+FOR (SELECT * FROM dbo.MemberAccount) --查出需要的集合放到游标中
+OPEN My_Cursor; --打开游标
+FETCH NEXT FROM My_Cursor ; --读取第一行数据
+WHILE @@FETCH_STATUS = 0
+    BEGIN
+        --UPDATE dbo.MemberAccount SET UserName = UserName + 'A' WHERE CURRENT OF My_Cursor; --更新
+        --DELETE FROM dbo.MemberAccount WHERE CURRENT OF My_Cursor; --删除
+        FETCH NEXT FROM My_Cursor; --读取下一行数据
+    END
+CLOSE My_Cursor; --关闭游标
+DEALLOCATE My_Cursor; --释放游标
+GO
+ 
+--2. 利用游标循环更新MemberService表中的数据（更新每个用户所购买服务的时间）
+DECLARE @UserId varchar(50),@UserName varchar(50)
+ 
+DECLARE My_Cursor CURSOR --定义游标
+FOR (SELECT UserId FROM dbo.MemberAccount) --查出需要的集合放到游标中
+OPEN My_Cursor; --打开游标
+FETCH NEXT FROM My_Cursor INTO @UserId,@UserName; --读取第一行数据(将MemberAccount表中的UserId放到@UserId变量中)
+WHILE @@FETCH_STATUS = 0
+    BEGIN
+        PRINT @UserId; --打印数据(打印MemberAccount表中的UserId)
+        UPDATE dbo.MemberService SET ServiceTime = DATEADD(Month, 6, getdate()) WHERE UserId = @UserId; --更新数据
+        FETCH NEXT FROM My_Cursor INTO @UserId,@UserName; --读取下一行数据(将MemberAccount表中的UserId放到@UserId变量中)
+    END
+CLOSE My_Cursor; --关闭游标
+DEALLOCATE My_Cursor; --释放游标
+GO
+
+
+
+    --loop循环（条件成立时退出）
+   declare
+    pnum number:=1;
+    begin
+        loop
+        --退出条件：循环变量大于10
+        exit when pnum>10;
+        --打印该变量的值
+        DBMS_OUTPUT.PUT_LINE(pnum);
+         --循环变量+1
+         pnum:=pnum+1;
+     end loop;
+     end;
+
+--for循环（1..10表示连续区间）
+declare 
+        punm number:=1;
+        begin
+        for pnum in 1..10 loop
+        dbms_output.put_line(pnum);
+        end loop;
+     end;
+
+--for循环（1..10表示连续区间）
+declare 
+        punm number:=1;
+        begin
+        for pnum in 1..10 loop
+        dbms_output.put_line(pnum);
+        end loop;
+     end;   
