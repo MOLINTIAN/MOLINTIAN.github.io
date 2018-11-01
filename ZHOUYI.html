@@ -1,2 +1,209 @@
 # MOLINTIAN.github.io
 自己建的网页，用于记录。
+驼峰命名法则：printEmployeePaychecks()；
+
+
+postgresql：用户名：postgres;密码：823328
+
+
+浏览器，360组件等，github等；geogle测试以及查询
+
+码云：MOLINTIAN,zhouyi...,邮箱绑定：zy.....
+
+
+git上传代码：
+
+git pull（必须先pull，这一步执行后一定仔细看，如果发生错误后一定看哪错了，为什么错了，不会弄找人帮忙）
+
+git status
+
+git add  <文件PATH>（一个文件一个文件的放，确定是你该懂得东西再add）或者git add .  上传所有。
+git commit -m "コミット日：2018/10/25 コミット者：周毅  コミット内容：完善了弹出dialog，实现删除"  
+
+git push origin
+
+在寮的内网:https://biz-man.jp/a?login
+在本社时内网：https://192.168.1.73/a/login;JSESSIONID=c825d9cf788b44eca624c56639322cdb
+账号：zhouy,密码：zhouy2018
+
+
+我的公司邮箱：zhouyi@wisdom-japan.com
+
+
+springMVC中文说明文档：https://spring-mvc.linesh.tw/CONTENTS.html
+springMVC英文说明文档：https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-servlet
+spring说明文档：https://lfvepclr.gitbooks.io/spring-framework-5-doc-cn/content/
+
+postman账号：MOLINTIAN,zy...@163.com,zhouyi...
+
+mvn过程：mvn clean:clean  mvn eclipse:eclipse
+
+模糊查询SQL:用sql的like句子，例：SELECT * FROM Persons WHERE City LIKE '%lond%'  SELECT * FROM Persons
+WHERE City LIKE '[ALN]%'
+1,通配符 % 多个或一个字符，_ 一个字符,
+2，[charlist] 字符串列中的任何一个单词，[^charlist]或者[!charlist]不在字符串中的任何一个单词。
+3,SQL中的条件查询：   case when 条件1 then 结果1 when 条件2 then 结果2 else 结果N end
+
+
+github网页：https://github.com/MOLINTIAN/MOLINTIAN.github.io.git
+
+
+报文形式：
+ULR:http://localhost:8080/weiapi/adminLogin/adminLogin(本地址+文件头路径+接口总路径+接口次路径)
+
+raw+json
+报文格式：
+{
+  
+"userType" : "0",
+
+"requestTimestamp" : "1464148475538",
+  
+"userid" : "1000000843202230",
+ 
+ "requestNo" : "WDJ01006",
+  
+"token" : "10001IIQaCcDma2OnmZ_CwiQrQXsi",
+ 
+ "requestData" : {
+  "managerLoginId":"123",
+  "managerPassword":"123123"
+  }
+}
+
+
+java中，"字符串/对象等"  数值不要符号
+sql:语句
+select count(c.state_room),a.dormitory_name,a.dormitory_address from Dormitory as a
+         LEFT JOIN housing_resources as b on a.dormitory_id = b.dormitory_id
+         LEFT JOIN room as c on b.housing_resources_id = c.housing_resources_id 
+where c.state_room = '1' 
+group by a.dormitory_id
+
+
+<select id="managerHouseInformation" resultType="HouseInformation" parameterType="QueryObject">
+		<!-- ></>房源信息主页+检索 -->
+		select count(c.state_room) as count,a.dormitory_name,a.dormitory_address
+		from Dormitory as a
+		LEFT JOIN housing_resources as b on a.dormitory_id = b.dormitory_id
+		LEFT JOIN room as c on b.housing_resources_id = c.housing_resources_id
+		where c.state_room = '1'
+		<if test="dormitoryName != '' and dormitoryName != null">
+			and a.dormitory_name like #{dormitoryName}
+		</if>
+		<if test="dormitoryAddress != '' and dormitoryAddress != null">
+			and a.dormitory_address like #{dormitoryAddress}
+		</if>
+		<if test="count == '1'">
+			order by count DESC
+		</if>
+		<if test="count == '' or count == null or count == '0'">
+			order by a.create_time DESC
+		</if>
+	</select>
+
+
+delete from w_wkn where w_wkn.id in ( select id  from w_wzx where w_wzx.w.name)
+同意思：delete from table where id in (select user_id from table2) 
+
+级联操作 cascade
+
+sql美化工具,sql的一大助力。
+
+
+自动刷新网页的三种方法。
+1.页面自动刷新：把如下代码加入＜head>区域中
+＜meta http-equiv="refresh" content="20">,其中20指每隔20秒刷新一次页面.
+
+2.页面自动跳转：把如下代码加入＜head>区域中
+＜meta http-equiv="refresh" content="20;url=http://www.hackhome.com">,其中20指隔20秒后跳转到http://www.hackhome.com页面
+
+3.页面自动刷新js版
+＜script language="JavaScript">
+function myrefresh(){
+window.location.reload();
+}
+setTimeout('myrefresh()',1000); //指定1秒刷新一次
+＜/script>
+
+
+ MySQL的Limit子句
+　　Limit子句可以被用于强制 SELECT 语句返回指定的记录数。Limit接受一个或两个数字参数。参数必须是一个整数常量。如果给定两个参数，第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目。
+　　//初始记录行的偏移量是 0(而不是 1)：
+　　mysql> SELECT * FROM table LIMIT 5,10; //检索记录行6-15
+　　//为了检索从某一个偏移量到记录集的结束所有的记录行，可以指定第二个参数为 -1：
+　　mysql> SELECT * FROM table LIMIT 95,-1; // 检索记录行 96-last
+　　//如果只给定一个参数，它表示返回最大的记录行数目。换句话说，LIMIT n 等价于 LIMIT 0,n：
+　　mysql> SELECT * FROM table LIMIT 5;     //检索前 5 个记录行
+附录：OFFSET
+　　为了与 PostgreSQL 兼容，MySQL 也支持句法： LIMIT # OFFSET #。
+　　经常用到在数据库中查询中间几条数据的需求
+　　比如下面的sql语句：
+　　　　① selete * from testtable limit 2,1;
+　　　　② selete * from testtable limit 2 offset 1;
+　　注意：
+　　　　1.数据库数据计算是从0开始的
+　　　　2.offset X是跳过X个数据，limit Y是选取Y个数据
+　　　　3.limit  X,Y  中X表示跳过X个数据，读取Y个数据
+　　这两个都是能完成需要，但是他们之间是有区别的：
+　　　　①是从数据库中第三条开始查询，取一条数据，即第三条数据读取，一二条跳过
+　　　　②是从数据库中的第二条数据开始查询两条数据，即第二条和第三条。
+
+vue中created和mounted
+通常created使用的次数多，而mounted通常是在一些插件的使用或者组件的使用中进行操作
+
+多表删除（e盘中有多表删除语句）
+一：利用Myaql中的思想，见表时就写好级联关系，删除时就会对应的删除。
+二：层层删除。从底层开始。
+例子：又底层c到b，最后到a
+一层：
+delete from c 
+where bid in(select b.bid from a  ,b where b.aid=a.aid and a.name='1')
+二层：
+delete from b where aid in(select aid from a where name='1')
+三层：
+delete from a where name='1'
+
+数据库增加并加密，key是解密解密的关键词。加密直接写一个test.java调用加密解密函数即可。
+
+
+
+javascript知识。
+prompt()弹出一个可输入切带有提示的框：var score = prompt("请输入成绩"：)
+javascript中创建对象变量：var obj = new Object();typeof 检查是对象？console.log(typeof obj)
+对象添加属性 obj.名 = "字段"。删除对象，delete 对象.属性名
+创建一个函数 var fun = new Function();需要执行的代码，直接封装到函数中，调用执行。调用:fun();
+创建函数：function fun([形参1]，[形参2]....){}      function fun(实参1，实参2....){}
+立即执行函数：  (function fun(实参1，实参2....){})();
+this是当前页面上下文，指向对象。
+工厂方法创建对象：function person(){ var obj = new Object();obj.name = this.name;obj.sex = sex;.....}
+var obj1 = new person("","");var obj2 = new person("","");......
+function person(name,sex,...){this.name = name,this.sex = sex}
+原型对象：prototype。console.log(person.prototype)。同一个类的实例obj1，obj2。所共有的对象属性（相当一个公共的区域）。去原型找，找到实例测返回。
+
+
+vue.js中单选框radio改变事件;
+<input type="radio" name="bedStatus" id="allot" checked="checked" value="allot">Allot
+
+<input type="radio" name="bedStatus" id="transfer" value="transfer">Transfer
+--------------------- 
+$(document).ready(function() {
+   
+ $('input[type=radio][name=bedStatus]').change(function() {
+        
+if (this.value == 'allot') {
+            alert("Allot Thai Gayo Bhai");
+        }
+        
+else if (this.value == 'transfer') {
+            alert("Transfer Thai Gayo");
+        }
+    });
+});
+--------------------- 
+
+添加列：Alter table user add salary float，删除列：Alter table user drop column room_id
+
+数字的数据类型初期值为0，字符串初期值：""空字符串，布尔类型的初期值：false
+
+java中executable -- 设置访问权限为true
