@@ -1,2 +1,18 @@
 # MOLINTIAN.github.io
-自己建的网页，用于记录。
+
+group by分组，比如求出各个部门的平均工资，各个部门的各个工种的平均工资。select deparment_id,job_id,avg(salary) group by department_id,job_id
+group中后面出现的，前面哪怕用不上，也得写上，不然会报错。
+
+where中是不许出现组函数的，比如 where sum().要用select department_id,sum(salary) having sum(salary)>99000 group by department_id
+
+组函数时刻相互嵌套的，例如：max(avg())
+
+distinct去掉重复的值。
+
+子查询;
+谁的工资比abel高:select last_name,salary from employees where salary > (select salary from employees where laat_name =
+'abel').
+查询chen的信息：select * from employees where employees_id = (select employees_id from employees where last_name =
+'chen').
+
+Constraints,约束，限制写入数据库的形式。unique，表示数据唯一，唯一性的约束。
