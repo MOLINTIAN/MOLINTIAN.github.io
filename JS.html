@@ -1,0 +1,31 @@
+# MOLINTIAN.github.io
+
+JS的event.srcElement与event.target（触发事件对象）
+
+IE下,event对象有srcElement属性,但是没有target属性;
+Firefox下,event对象有target属性,但是没有srcElement属性.但他们的作用是相当的
+
+解决方法:使用obj = event.srcElement ? event.srcElement : event.target;
+或：var evtTarget = event.target || event.srcElement;
+
+
+js将html的所有控件都看成是一个个对象，通过js的各个属性，就能对其进行操作处理，js里对象的整体结构是树形的结构。一层一层的追溯，即可获取需要的结果。
+
+event.srcElement：表示的当前的这个事件源。
+
+event.srcElement.parentNode：表示当前事件源的父节点。
+
+ parentNode：父节点，也就是上一层的节点。可以是任何一个标签。
+
+event.srcElement.firstChild：当前事件的第一个节点，如果节点是input，通过event.srcElement.firstChild.value就可以获取此input的值。
+
+event.srcElement.parentElement：是指在鼠标所在对象的上一个对象。
+
+event.srcElement.children：当前节点下对象的个数，有多个的话就是个数组，如当前节点下有2个input的对象，要获取这两个可以用event.srcElement.
+children[0] 与 event.srcElement.children[1]分别获取。
+
+event.srcElement.tagName 得到点击位置的标签名称
+
+event.srcElement.title 得到当前标签title属性值
+
+event.srcElement.options[event.srcElement.selectedIndex].value
