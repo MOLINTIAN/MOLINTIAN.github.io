@@ -71,14 +71,23 @@ el绑定，可以是'#id'，可以使'.class'。
 vue交互  vue-resourses.js是实现交互的配置文件  
 resources+ajax+php:
 发送请求：
+
 this.$http.get()/post()/jsonp()
+
 this.$http({
+
 url:地址,
+
 data:给后台提交的数据,
+
 method:'get'/'post'/'json'
+
 jsonp:'cd'//cdname
+
 }).then(function(res){
+
 var json = res.data
+
 })
 
 vue的生存周期，
