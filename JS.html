@@ -32,3 +32,10 @@ event.srcElement.options[event.srcElement.selectedIndex].value
 
 
 splice() 方法用于插入、删除或替换<数组>的元素。
+
+ 在html中自从加入了FormData
+ FormData可以把它理解成一个虚拟的表单对象，它只有一个方法append，这个可以在浏览器console一下就知道了。
+ 我们可以通过append向FormData里面添加各种需要提交的数据。
+ 
+ 这里主要使用FormData来拼装好数据参数，提交到后台
+ var formFile = new FormData();
