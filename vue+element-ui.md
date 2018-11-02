@@ -23,14 +23,21 @@ v-model通常用于表单组件的绑定，例如input，select等。它与v-tex
 {{{}}}三个花括号，转义，现在已经不用，防止闪烁
 
 计算属性的使用：computed：{业务逻辑代码}
+
 Vue选项的合并之$options
+
 vue提供的过滤器：
 capitalize,uppercase,currency
 过滤器：debounce  延迟执行
+
 和数组配合使用的过滤器：arr=['wo'，'ni','ta']
+
 limitBy限制几个/限制取出几个/从几个开始取，取几个/ v-for ="val in arr | limitBy 2 1 "
+
 filterBy  v-for ="val in arr | filterBy 'w' " 
+
 orderBy   v-for ="val in arr | orderBy '1' " 1正序，-1逆序
+
 自定义过滤器：
 Vue.filter('name',function(input,a,b){})
 例子：时间转化器 
