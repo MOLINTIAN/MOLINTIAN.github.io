@@ -36,7 +36,9 @@ limitBy限制几个/限制取出几个/从几个开始取，取几个/ v-for ="v
 
 filterBy  v-for ="val in arr | filterBy 'w' " 
 
-orderBy   v-for ="val in arr | orderBy '1' " 1正序，-1逆序
+orderBy   v-for ="val in arr | orderBy '1' " 1正序，-1逆序，2倒叙
+
+model到view的过程，read和wirte
 
 自定义过滤器：
 Vue.filter('name',function(input,a,b){})
@@ -93,8 +95,13 @@ var json = res.data
 vue的生存周期，
 钩子函数：
 created：实例已经创建，执行
+
 beforeCompile:编译之前
+
 compiled：编译之后（创建到dom树上）
+
 ready 加载完实现
+
 beforeDestory:销毁之前
+
 destoryed:销毁之后
