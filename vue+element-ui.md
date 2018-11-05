@@ -105,3 +105,7 @@ ready 加载完实现
 beforeDestory:销毁之前
 
 destoryed:销毁之后
+
+自定义指令：Vue.directive('red',function(){this.el.style.background = 'red'})v-red 是指令名称，在定义的时候去掉v-
+this.el是原生的DOM对象。
+
