@@ -109,3 +109,52 @@ destoryed:销毁之后
 自定义指令：Vue.directive('red',function(){this.el.style.background = 'red'})v-red 是指令名称，在定义的时候去掉v-
 this.el是原生的DOM对象。
 
+自定义键盘信息：Vue.directive('on').keyCode.Ctrl=17
+
+延迟执行：@keydown.enter="show | debounce 2000"
+
+监听数据变化：vm.$el/$mount/$option/...
+
+vm.$watch(name,fnCb)；浅度监听数据变化。fnCb是函数
+
+vm.$watch(name,fnCb，{deep:true})；深度监听数据变化。
+
+vue过渡动画：本质走的是css3:transition,animation
+推荐使用animate.css来做动画。
+
+动画最简洁的形式：
+.fade-transition{transition:1s all ease;}
+进入：
+.fade.enter{opacty:0;}
+离开：
+.fade-leave{opacity:0;transform:translateX(200px);}
+
+vue组件（重要）
+
+slot:作用：占个位置
+
+vue-resource:交互;vue-router:路由;根据不同的url，出现不同的效果。
+
+vue中路由：<a v-link="{path:'/home'}">主页</a>,跳转用的v-link,在v-router中定义好路径，可多层嵌套路由。
+
+展示内容：<router-view></router-view>（路径访问后需要加上）
+
+路由中的其他信息：
+拼接路由：
+
+去路由中的信息：$router.param,取出路由中的参数。$router.path，当前的路径。$router.query.当前路由的数据。
+
+vue-loader:是基于webpack,模块加载器，在这里一切都是模块。网页是不识别.vue文件的，必须使用加载器来起作用。
+
+vue文件的结构：<template></template><script></script><style></sytle>
+
+简单的目录结构：index.html，main.js(入口文件)，App.vue(vue文件，推荐大写)，package.json(工程依赖文件,里面定义了传输格式等。)，webpack.config.js(webpack配置文件)
+
+build.js出口文件定义。
+
+模块化开发：
+导出模块：expert default{}
+
+引入模块：import 模块名 from 地址。
+
+webpack的准备工作：安装webpack和webpack-dev-server在node_modules中)
