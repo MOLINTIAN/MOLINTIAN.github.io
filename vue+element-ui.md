@@ -158,3 +158,13 @@ build.js出口文件定义。
 引入模块：import 模块名 from 地址。
 
 webpack的准备工作：安装webpack和webpack-dev-server在node_modules中)
+
+vue-loader：vue-html-loader（解析tempalte）;vue-style-loader(解析style)；
+
+脚手架vue-cli:帮你提供一个基本的项目结构，本身集成了很多的项目模板：webpack和webpacksimple。
+
+基本使用流程：
+
+1，安装命令：npm install vue-cli-g
+
+2，生成项目模板：vue-init <模板名>
