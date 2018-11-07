@@ -46,3 +46,16 @@ splice() 方法用于插入、删除或替换<数组>的元素。
 如果script标签在元素的前面，需要加window.onload；如果script放在了元素后面，就不需要加 window.onload。 
 
 keydown.enter/ctrl等，得到键码，console.log(ev.keycode)
+
+ URL.createObjectURL()方法会根据传入的参数创建一个指向该参数对象的URL. 这个URL的生命仅存在于它被创建的这个文档里.
+ 新的对象URL指向执行的File对象或者是Blob对象.
+ 
+ 语法：objectURL = URL.createObjectURL(blob || file);
+ 
+ File对象,就是一个文件,比如我用input type="file"标签来上传文件,那么里面的每个文件都是一个File对象.
+
+Blob对象,就是二进制数据,比如通过new Blob()创建的对象就是Blob对象.
+ 
+URL.revokeObjectURL()方法会释放一个通过URL.createObjectURL()创建的对象URL
+ 
+ 语法：window.URL.revokeObjectURL(objectURL);
